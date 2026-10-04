@@ -14,7 +14,7 @@ const products = [
         name: "Pisang Goreng",
         price: 2500,
         description: "Pisang goreng manis dan hangat.",
-        image: "pisang goreng.jpg"
+        image: "pisang gorweng.jpg"
     },
     {
         id: 3,
@@ -45,3 +45,23 @@ const products = [
         image: "cireng.jpg"
     }
 ];
+// 2. PENGATURAN KERANJANG
+const cart = new Map();
+const SHIPPING_COST = 5000;
+
+const menuList = document.getElementById("menu-list");
+const cartItems = document.getElementById("cart-items");
+const cartCount = document.getElementById("cart-count");
+const subtotalElement = document.getElementById("subtotal");
+const shippingElement = document.getElementById("shipping");
+const totalElement = document.getElementById("total");
+const checkoutForm = document.getElementById("checkout-form");
+const orderResult = document.getElementById("order-result");
+// Mengubah angka biasa menjadi format Rupiah (contoh: 2000 -> Rp2.000)
+function formatRupiah(number) {
+    return new Intl.NumberFormat("id-ID", {
+        style: "currency",
+        currency: "IDR",
+        maximumFractionDigits: 0
+    }).format(number);
+}
