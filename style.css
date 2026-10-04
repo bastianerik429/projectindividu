@@ -398,3 +398,75 @@ footer p {
     color: #d6c9bf;
     font-size: 13px;
 }
+/* RESPONSIVE: TABLET */
+@media (max-width: 850px) {
+    .hero {
+        grid-template-columns: 1fr;
+        padding-top: 40px;
+    }
+
+    .hero-image img {
+        height: 300px;
+    }
+
+    .menu-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .order-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* RESPONSIVE: HP */
+@media (max-width: 520px) {
+    .navbar {
+        padding: 15px 5%;
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
+    .logo {
+        font-size: 23px;
+    }
+
+    .navbar nav {
+        gap: 14px;
+        flex-wrap: wrap;
+    }
+
+    .navbar nav a {
+        font-size: 12px;
+    }
+
+    .hero,
+    .menu-section,
+    .order-section {
+        padding: 40px 5%;
+    }
+
+    .hero h1 {
+        font-size: 36px;
+    }
+
+    .hero-image img {
+        height: 230px;
+    }
+
+    .menu-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .section-heading h2 {
+        font-size: 27px;
+    }
+
+    .cart-card,
+    .checkout-card {
+        padding: 18px;
+    }
+
+    .menu-card img {
+        height: 220px;
+    }
+}
