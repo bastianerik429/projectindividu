@@ -65,3 +65,144 @@ function formatRupiah(number) {
         maximumFractionDigits: 0
     }).format(number);
 }
+// 3. MENAMPILKAN DAFTAR MENU
+function renderProducts() {
+    menuList.innerHTML = products.map(product => `
+        <article class="menu-card">
+            <img
+                src="${product.image}"
+                alt="${product.name}"
+                loading="lazy"
+                onerror="this.style.display='none'"
+            >
+
+            <div class="menu-info">
+                <h3>${product.name}</h3>
+                <p>${product.description}</p>
+
+                <div class="menu-bottom">
+                    <span class="menu-price">
+                        ${formatRupiah(product.price)}
+                    </span>
+
+                    <button
+                        class="add-btn"
+                        data-add="${product.id}"
+                        type="button"
+                    >
+                        + Tambah
+                    </button>
+                </div>
+            </div>
+        </article>
+    `).join("");
+}
+
+// 4. MENAMBAH BARANG KE KERANJANG
+function addToCart(productId) {
+    const currentQuantity = cart.get(productId) || 0;
+    cart.set(productId, currentQuantity + 1);
+
+    renderCart();
+}
+
+// Mengubah jumlah barang (+ / -).
+// Jika jumlah mencapai 0, barang otomatis dihapus dari keranjang.
+function changeQuantity(productId, change) {
+    const currentQuantity = cart.get(productId) || 0;
+    const newQuantity = currentQuantity + change;
+
+    if (newQuantity <= 0) {
+        cart.delete(productId);
+    } else {
+        cart.set(productId, newQuantity);
+    }
+
+    renderCart();
+}
+
+// 5. MENGHITUNG SUBTOTAL
+function calculateSubtotal() {
+    let subtotal = 0;
+
+    cart.forEach((quantity, productId) => {
+        const product = products.find(
+            item => item.id === productId
+        );
+
+        if (product) {
+            subtotal += product.price * quantity;
+        }
+    });
+
+    return subtotal;
+}
+
+// 6. MENAMPILKAN & MENGUPDATE TAMPILAN KERANJANG
+function renderCart() {
+    let totalItems = 0;
+
+    cart.forEach(quantity => {
+        totalItems += quantity;
+    });
+
+    cartCount.textContent = totalItems;
+
+    if (cart.size === 0) {
+        cartItems.innerHTML = `
+            <p class="empty-cart">
+                Keranjang kamu masih kosong.
+            </p>
+        `;
+    } else {
+        cartItems.innerHTML = Array.from(cart.entries())
+            .map(([productId, quantity]) => {
+                const product = products.find(
+                    item => item.id === productId
+                );
+
+                return `
+                    <div class="cart-item">
+                        <div class="cart-item-info">
+                            <strong>${product.name}</strong>
+                            <small>
+                                ${formatRupiah(product.price)}
+                                × ${quantity}
+                            </small>
+                            <strong>
+                                ${formatRupiah(
+                                    product.price * quantity
+                                )}
+                            </strong>
+                        </div>
+
+                        <div class="quantity-controls">
+                            <button
+                                type="button"
+                                data-minus="${productId}"
+                                aria-label="Kurangi ${product.name}"
+                            >−</button>
+
+                            <span>${quantity}</span>
+
+                            <button
+                                type="button"
+                                data-plus="${productId}"
+                                aria-label="Tambah ${product.name}"
+                            >+</button>
+                        </div>
+                    </div>
+                `;
+            })
+            .join("");
+    }
+
+    // Ongkir hanya dihitung jika ada barang di keranjang.
+    const subtotal = calculateSubtotal();
+    const shipping = subtotal > 0 ? SHIPPING_COST : 0;
+    const total = subtotal + shipping;
+
+    subtotalElement.textContent = formatRupiah(subtotal);
+    shippingElement.textContent = formatRupiah(shipping);
+    totalElement.textContent = formatRupiah(total);
+}
