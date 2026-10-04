@@ -73,5 +73,40 @@
                     <strong id="total">Rp0</strong>
                 </div>
             </div>
+            <form class="checkout-card" id="checkout-form">
+                <h3>Data Pemesan</h3>
+
+                <label for="customer-name">Nama lengkap</label>
+                <input type="text" id="customer-name"
+                    placeholder="Masukkan nama kamu" required>
+
+                <label for="customer-phone">Nomor WhatsApp</label>
+                <input type="tel" id="customer-phone"
+                    placeholder="Contoh: 081234567890"
+                    pattern="08[0-9]{8,11}" required>
+
+                <label for="customer-address">Alamat pengiriman</label>
+                <textarea id="customer-address"
+                    placeholder="Nama jalan, nomor rumah, patokan"
+                    rows="3" required></textarea>
+
+                <label for="payment-method">Metode pembayaran</label>
+                <select id="payment-method" required>
+                    <option value="">Pilih pembayaran</option>
+                    <option value="COD">Bayar di tempat (COD)</option>
+                    <option value="Transfer">Transfer bank (simulasi)</option>
+                    <option value="QRIS">QRIS (simulasi)</option>
+                </select>
+
+                <button type="submit" class="btn-primary full-width">
+                    Buat Pesanan
+                </button>
+
+                <p class="payment-note">
+                    Pembayaran transfer dan QRIS pada demo ini belum
+                    terhubung ke bank atau penyedia pembayaran.
+                </p>
+            </form>
+        </div>
 </body>
 </html>
