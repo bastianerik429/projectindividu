@@ -227,3 +227,20 @@ document.addEventListener("click", event => {
         changeQuantity(productId, -1);
     }
 });
+// 8. PROSES CHECKOUT FORM
+checkoutForm.addEventListener("submit", event => {
+    event.preventDefault();
+
+    if (cart.size === 0) {
+        alert("Keranjang kamu masih kosong! Pilih minimal 1 makanan.");
+        return;
+    }
+
+    const name = document.getElementById("customer-name").value;
+    const phone = document.getElementById("customer-phone").value;
+    const address = document.getElementById("customer-address").value;
+    const payment = document.getElementById("payment-method").value;
+
+    const subtotal = calculateSubtotal();
+    const shipping = SHIPPING_COST;
+    const total = subtotal + shipping;
