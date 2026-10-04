@@ -206,3 +206,24 @@ function renderCart() {
     shippingElement.textContent = formatRupiah(shipping);
     totalElement.textContent = formatRupiah(total);
 }
+// 7. EVENT DELEGATION UNTUK KLIK TOMBOL (+ TAMBAH, +, -)
+document.addEventListener("click", event => {
+    const addButton = event.target.closest("[data-add]");
+    const plusButton = event.target.closest("[data-plus]");
+    const minusButton = event.target.closest("[data-minus]");
+
+    if (addButton) {
+        const productId = Number(addButton.dataset.add);
+        addToCart(productId);
+    }
+
+    if (plusButton) {
+        const productId = Number(plusButton.dataset.plus);
+        changeQuantity(productId, 1);
+    }
+
+    if (minusButton) {
+        const productId = Number(minusButton.dataset.minus);
+        changeQuantity(productId, -1);
+    }
+});
