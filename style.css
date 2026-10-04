@@ -1,0 +1,18 @@
+/* RESET DAN PENGATURAN DASAR */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* VARIABEL WARNA & TEMA */
+:root {
+    --orange: #f07828;
+    --orange-dark: #d95d13;
+    --cream: #fff8ef;
+    --brown: #38251b;
+    --muted: #786d64;
+    --white: #ffffff;
+    --border: #eee4d9;
+    --green: #218653;
+}
