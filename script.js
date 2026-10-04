@@ -244,3 +244,28 @@ checkoutForm.addEventListener("submit", event => {
     const subtotal = calculateSubtotal();
     const shipping = SHIPPING_COST;
     const total = subtotal + shipping;
+    // Menampilkan ringkasan resi pemesanan
+    orderResult.hidden = false;
+    orderResult.innerHTML = `
+        <h3>Pesanan Berhasil Dibuat! 🎉</h3>
+        <p><strong>Nama:</strong> ${name}</p>
+        <p><strong>No. WhatsApp:</strong> ${phone}</p>
+        <p><strong>Alamat:</strong> ${address}</p>
+        <p><strong>Metode Pembayaran:</strong> ${payment}</p>
+        <p><strong>Total Pembayaran:</strong> ${formatRupiah(total)}</p>
+        <br>
+        <p><em>Terima kasih telah memesan di GorengYuk! Pesanan Anda sedang diproses.</em></p>
+        <button type="button" onclick="this.parentElement.hidden=true">Tutup</button>
+    `;
+
+    // Mengosongkan keranjang & form setelah pesanan dibuat
+    cart.clear();
+    checkoutForm.reset();
+    renderCart();
+
+    // Otomatis menggeser layar ke area hasil pesanan
+    orderResult.scrollIntoView({ behavior: "smooth" });
+});
+// 9. INISIALISASI HALAMAN
+renderProducts();
+renderCart();
