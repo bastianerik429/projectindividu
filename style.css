@@ -231,3 +231,170 @@ select {
 .add-btn:hover {
     background: var(--orange-dark);
 }
+/* KERANJANG DAN CHECKOUT */
+.order-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+    gap: 25px;
+}
+
+.cart-card,
+.checkout-card {
+    padding: 25px;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 17px;
+}
+
+.cart-card h3,
+.checkout-card h3 {
+    font-size: 21px;
+    margin-bottom: 20px;
+}
+
+.empty-cart {
+    padding: 25px 0;
+    color: var(--muted);
+    text-align: center;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    padding: 15px 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.cart-item-info {
+    min-width: 0;
+}
+
+.cart-item-info strong {
+    display: block;
+}
+
+.cart-item-info small {
+    color: var(--muted);
+}
+
+.quantity-controls {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+}
+
+.quantity-controls button {
+    width: 29px;
+    height: 29px;
+    border: none;
+    border-radius: 7px;
+    background: #ffead9;
+    color: var(--orange-dark);
+    cursor: pointer;
+    font-weight: 800;
+}
+
+.price-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    padding-top: 14px;
+    color: var(--muted);
+}
+
+.total-row {
+    margin-top: 12px;
+    padding-top: 18px;
+    border-top: 1px solid var(--border);
+    color: var(--brown);
+    font-size: 17px;
+    font-weight: 800;
+}
+
+.total-row strong {
+    color: var(--orange-dark);
+}
+
+/* FORM CHECKOUT */
+.checkout-card label {
+    display: block;
+    margin: 14px 0 7px;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.checkout-card input,
+.checkout-card textarea,
+.checkout-card select {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #e4d9ce;
+    border-radius: 9px;
+    outline: none;
+    background: #fffdfb;
+}
+
+.checkout-card input:focus,
+.checkout-card textarea:focus,
+.checkout-card select:focus {
+    border-color: var(--orange);
+    box-shadow: 0 0 0 3px #f078281a;
+}
+
+.checkout-card textarea {
+    resize: vertical;
+}
+
+.payment-note {
+    color: var(--muted);
+    font-size: 12px;
+    margin-top: 12px;
+}
+
+/* KOTAK HASIL PESANAN (RESI) */
+.order-result {
+    background: #e8f7ee;
+    border: 1px solid #b7e4c8;
+    color: #165d38;
+    padding: 22px;
+    margin-top: 25px;
+    border-radius: 12px;
+    overflow-wrap: anywhere;
+}
+
+.order-result h3 {
+    margin-bottom: 10px;
+}
+
+.order-result p {
+    margin: 5px 0;
+}
+
+.order-result button {
+    margin-top: 15px;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 8px;
+    background: var(--green);
+    color: white;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    background: var(--brown);
+    color: white;
+    padding: 35px 20px;
+}
+
+footer p {
+    margin-top: 8px;
+    color: #d6c9bf;
+    font-size: 13px;
+}
