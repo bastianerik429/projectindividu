@@ -14,7 +14,7 @@ const products = [
         name: "Pisang Goreng",
         price: 2500,
         description: "Pisang goreng manis dan hangat.",
-        image: "pisang gorweng.jpg"
+        image: "pisang goreng.jpg"
     },
     {
         id: 3,
